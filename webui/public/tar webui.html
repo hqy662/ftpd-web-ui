@@ -29,7 +29,9 @@
 		}
 	document.getElementById("shuChuMingLing").value=scml;
 	}
-	function dianJi
+	function dianJiYaSuo(){
+		docum
+	}
 	function yaSuo(){
 		scml+="-cf ";
 		scml+=document.getElementById("yaSuoWenJian").value;
@@ -57,11 +59,11 @@
 <br>
 目录:<input id="muLu">
 压缩文件:<input id="yaSuoWenJian">
-<br>
+<div hidden="true">
 压缩方法:<input type="radio" name="yaSuoFangFa" value="g">gz
 <input type="radio" name="yaSuoFangFa" value="b">bz2
 <input type="radio" name="yaSuoFangFa" value="x">xz
-<br>
+</div>
 输出命令:<textarea id="shuChuMingLing"></textarea>
 <br>
 <input type="button" value="生成" onclick="shengCheng()">
