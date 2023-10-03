@@ -10,18 +10,62 @@
 <head>
 <meta charset="UTF-8">
 <title>tar webui</title>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+	var scml;
+	function shengCheng(){
+		scml="tar ";
+		switch(document.forms[0]["caoZuo"].value){
+			case "y":
+			yaSuo();
+			break;
+			case "j":
+			jieYa();
+			break;
+			case "c":
+			chaKan();
+			break;
+			default:
+			alert("test4");
+		}
+	document.getElementById("shuChuMingLing").value=scml;
+	}
+	function yaSuo(){
+		scml+="-cf ";
+		scml+=document.getElementById("yaSuoWenJian").value;
+		scml+=" ";
+		scml+=document.getElementById("muLu").value;
+	}
+	function jieYa(){
+		alert("jieya");
+		scml+="-xf ";
+		scml+=document.getElementById("yaSuoWenJian").value;
+		scml+=" -C ";
+		scml+=document.getElementById("muLu").value;
+	}
+	function chaKan(){
+		scml+="-tf ";
+		scml+=document.getElementById("yaSuoWenJian").value;
+	}
+</script>
 </head>
 <body>
-<input type="radio" name="caoZuo">压缩
-<input type="radio" name="caoZuo">解压
-<input type="radio" name="caoZuo">查看
-目录:<input>
-压缩文件:<input>
+<form>
+<input type="radio" name="caoZuo" value="y" on>压缩
+<input type="radio" name="caoZuo" value="j">解压
+<input type="radio" name="caoZuo" value="c">查看压缩文件
+<br>
+目录:<input id="muLu">
+压缩文件:<input id="yaSuoWenJian">
+<br>
+压缩方法:<input type="radio" name="yaSuoFangFa" value="g">gz
+<input type="radio" name="yaSuoFangFa" value="b">bz2
+<input type="radio" name="yaSuoFangFa" value="x">xz
 <br>
 输出命令:<textarea id="shuChuMingLing"></textarea>
-<input type="button" value="生成">
+<br>
+<input type="button" value="生成" onclick="shengCheng()">
 <input type="button" value="复制到剪贴板">
-ver 0.11
+</form>
+ver 0.2
 </body>
 </html>
