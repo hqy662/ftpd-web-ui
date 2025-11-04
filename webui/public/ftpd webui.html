@@ -10,12 +10,15 @@
 <script type="text/javascript">
 	function shengCheng()
 	{
-		var scml="busybox tcpsvd -vE 0.0.0.0 "+document.getElementById("duanKou").value+" busybox ftpd ";
+		var scml="busybox tcpsvd -vE 0.0.0.0 "+document.getElementById("duanKou").value+" busybox ftpd";
 		if(document.getElementById("yunXuShangChuan").checked==1){
-			scml+="-w";
+			scml+=" -w";
+		}
+		if(document.getElementById("verboseLog").checked==1){
+			scml+=" -vv";
 		}
 		if(document.getElementById("logToSyslog").checked==1){
-			scml+="-S";
+			scml+=" -S";
 		}
 		scml+=" "+document.getElementById("muLu").value;
 		
@@ -33,9 +36,11 @@
 		目录:
 <input id="muLu" value="/data/data/com.termux/files/home">
 端口:
-<input id="duanKou" value="2121">
+<input id="duanKou" value="8021">
 <input id="yunXuShangChuan" type="checkbox" checked="1">
 允许上传
+<input type="checkbox" id="verboseLog">
+额外的日志
 <input type="checkbox" id="logToSyslog">
 记录日志到syslog
 <input type="checkbox" id="houTaiYX" checked="1">后台运行
@@ -45,10 +50,9 @@
 <textarea id="shuChuMingLing" style="width: 600px;"></textarea>
 <br>
 <input type="button" value="生成" onclick="shengCheng()">
+<input type="reset" value="重置">
 <input type="button" value="复制到剪贴板" onclick="fuZhiDaoJTB()">
 	</form>
-注：只支持匿名登录
-<br>
-ver 0.6
+注：只支持匿名登录aaa
 </body>
 </html>
